@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #transparent; /* cozy beige */
+  background: #f5f0e8; /* cozy beige */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@ body {
   align-items: center;
   min-width: 280px;
   max-width: 500px;
-  color: #5a513f; /* default text color (beige theme) */
+  color: #5a513f; /* default text & leaf color */
   transition: color 0.3s ease;
 }
 
@@ -37,10 +37,10 @@ body {
   cursor: pointer;
 }
 
-.color-circle[data-color="#a6987f"] { background: #a6987f; }
-.color-circle[data-color="#eabecf"] { background: #eabecf; }
-.color-circle[data-color="#b8d5c8"] { background: #b8d5c8; }
-.color-circle[data-color="#a3c4f3"] { background: #a3c4f3; }
+.color-circle:nth-child(1) { background: #a6987f; }
+.color-circle:nth-child(2) { background: #eabecf; }
+.color-circle:nth-child(3) { background: #b8d5c8; }
+.color-circle:nth-child(4) { background: #a3c4f3; }
 
 #affirmation {
   font-size: 14px;
@@ -53,7 +53,8 @@ body {
 }
 
 .leaf {
-  stroke: currentColor; /* inherit the text color */
+  font-size: 18px;
   margin-right: 6px;
-  transition: stroke 0.3s ease;
+  transition: color 0.3s ease;
+  /* leaf inherits widget color by default */
 }
