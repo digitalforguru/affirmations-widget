@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cottagecore Daily Affirmations</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daily affirmations</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="widget">
+        <div class="color-picker">
+            <span class="color beige" data-color="#f5f0e8"></span>
+            <span class="color pink" data-color="#fbe4e6"></span>
+            <span class="color sage" data-color="#dfe9e3"></span>
+            <span class="color blue" data-color="#dceaf5"></span>
+        </div>
+        <p id="affirmation"></p>
+    </div>
+    <script src="affirmations.js"></script>
+    <script>
+        const affElem = document.getElementById("affirmation");
+        const today = new Date();
+        const dayOfYear = Math.floor(
+            (today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24
+        );
+        const affirmation = affirmations[dayOfYear % affirmations.length];
+        affElem.textContent = affirmation;
 
-<div class="card" id="card">
-  <!-- Decorative leaf/vine -->
-  <svg class="leaf" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6b8e23" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M2 16s6-6 12-6 8 6 8 6"></path>
-    <path d="M2 8s6-6 12-6 8 6 8 6"></path>
-  </svg>
-
-  <div class="affirmation" id="affirmation">Loading...</div>
-  <div class="colors">
-    <div class="color-btn beige" onclick="setTheme('#f5f0e6')"></div>
-    <div class="color-btn pink" onclick="setTheme('#fbe4e6')"></div>
-    <div class="color-btn sage" onclick="setTheme('#e4f0e6')"></div>
-    <div class="color-btn blue" onclick="setTheme('#e3f0f7')"></div>
-  </div>
-</div>
-
-<script src="affirmations.js"></script>
+        document.querySelectorAll(".color").forEach(circle => {
+            circle.addEventListener("click", () => {
+                document.body.style.backgroundColor = circle.dataset.color;
+            });
+        });
+    </script>
 </body>
 </html>
