@@ -1,5 +1,5 @@
 const affirmations = [
- "you are blooming in your own time",
+   "you are blooming in your own time",
   "soft days are still progress",
   "you are gentle and that is powerful",
   "rest is part of the process",
@@ -258,7 +258,7 @@ function getDailyAffirmation() {
 
 function setTheme(textColor) {
   const widget = document.querySelector('.widget');
-  widget.style.color = textColor;
+  widget.style.color = textColor; // this changes text + leaf color
 }
 
 function displayAffirmation() {
@@ -276,4 +276,4 @@ document.querySelectorAll('.color-circle').forEach(circle => {
 
 // initial load
 displayAffirmation();
-setTheme('#5a513f'); // beige default
+setTheme('#5a513f'); // default beige text & leaf color
