@@ -1,5 +1,5 @@
 const affirmations = [
-  "you are blooming in your own time",
+ "you are blooming in your own time",
   "soft days are still progress",
   "you are gentle and that is powerful",
   "rest is part of the process",
@@ -248,3 +248,32 @@ const affirmations = [
   "you deserve rest and gentle moments",
   "you are blossoming quietly with grace"
 ];
+
+// get daily affirmation based on date
+function getDailyAffirmation() {
+  const today = new Date();
+  const index = today.getFullYear() * 366 + today.getMonth() * 31 + today.getDate();
+  return affirmations[index % affirmations.length];
+}
+
+function setTheme(textColor) {
+  const widget = document.querySelector('.widget');
+  widget.style.color = textColor;
+}
+
+function displayAffirmation() {
+  const affirmationText = getDailyAffirmation();
+  document.getElementById('affirmation-text').textContent = affirmationText;
+}
+
+// setup color pickers
+document.querySelectorAll('.color-circle').forEach(circle => {
+  circle.addEventListener('click', () => {
+    const textColor = circle.getAttribute('data-text');
+    setTheme(textColor);
+  });
+});
+
+// initial load
+displayAffirmation();
+setTheme('#5a513f'); // beige default
