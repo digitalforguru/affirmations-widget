@@ -2,23 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>daily affirmation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Affirmation Widget</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="widget">
-    <div class="color-options">
-      <span class="color-circle" data-text="#5a513f"> </span>
-      <span class="color-circle" data-text="#9f4d5a"> </span>
-      <span class="color-circle" data-text="#4a695d"> </span>
-      <span class="color-circle" data-text="#2f4f90"> </span>
+  <div class="widget-container" id="widget">
+    <span class="leaf">𓅫</span>
+    <p id="affirmation"></p>
+    <div class="theme-selector">
+      <span class="color-circle beige" onclick="setTheme('beige')"></span>
+      <span class="color-circle pink" onclick="setTheme('pink')"></span>
+      <span class="color-circle sage" onclick="setTheme('sage')"></span>
+      <span class="color-circle blue" onclick="setTheme('blue')"></span>
     </div>
-    <p id="affirmation">
-      <span class="leaf">𓅫</span>
-      <span id="affirmation-text"></span>
-    </p>
   </div>
   <script src="affirmations.js"></script>
+  <script src="theme.js"></script>
 </body>
 </html>
