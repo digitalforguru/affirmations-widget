@@ -1,46 +1,59 @@
 body {
-    font-family: 'Georgia', serif;
-    background-color: #f5f0e8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  margin: 0;
+  padding: 0;
+  background: #transparent; /* cozy beige */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
 }
+
 .widget {
-    background: white;
-    border-radius: 12px;
-    padding: 12px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    max-width: 500px;
-    min-width: 300px;
+  background: #f5f0e8;
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 280px;
+  max-width: 500px;
+  color: #5a513f; /* default text color (beige theme) */
+  transition: color 0.3s ease;
 }
 
-.color-picker {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
+.color-options {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
-.color {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 1px solid rgba(0,0,0,0.1);
+.color-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer;
 }
 
-.beige { background-color: #f5f0e8; }
-.pink { background-color: #fbe4e6; }
-.sage { background-color: #dfe9e3; }
-.blue { background-color: #dceaf5; }
+.color-circle[data-color="#a6987f"] { background: #a6987f; }
+.color-circle[data-color="#eabecf"] { background: #eabecf; }
+.color-circle[data-color="#b8d5c8"] { background: #b8d5c8; }
+.color-circle[data-color="#a3c4f3"] { background: #a3c4f3; }
 
 #affirmation {
-    font-size: 14px;
-    text-align: center;
-    color: #5a5a5a;
-    letter-spacing: 0.5px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.4;
+  text-transform: lowercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leaf {
+  stroke: currentColor; /* inherit the text color */
+  margin-right: 6px;
+  transition: stroke 0.3s ease;
 }
