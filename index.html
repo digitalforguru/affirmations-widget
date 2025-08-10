@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>daily affirmations</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>daily affirmation</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="widget">
-        <div class="color-picker">
-            <span class="color beige" data-color="#f5f0e8"></span>
-            <span class="color pink" data-color="#fbe4e6"></span>
-            <span class="color sage" data-color="#dfe9e3"></span>
-            <span class="color blue" data-color="#dceaf5"></span>
-        </div> 
-        <p id="affirmation"></p>
+  <div class="widget">
+    <div class="color-options">
+      <span class="color-circle" data-color="#a6987f" data-text="#5a513f"></span>
+      <span class="color-circle" data-color="#eabecf" data-text="#9f4d5a"></span>
+      <span class="color-circle" data-color="#b8d5c8" data-text="#4a695d"></span>
+      <span class="color-circle" data-color="#a3c4f3" data-text="#2f4f90"></span>
     </div>
-    <script src="affirmations.js"></script>
-    <script>
-        const affElem = document.getElementById("affirmation");
-        const today = new Date();
-        const dayOfYear = Math.floor(
-            (today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24
-        );
-        const affirmation = affirmations[dayOfYear % affirmations.length];
-        affElem.textContent = affirmation;
-
-        document.querySelectorAll(".color").forEach(circle => {
-            circle.addEventListener("click", () => {
-                document.body.style.backgroundColor = circle.dataset.color;
-            });
-        });
-    </script>
+    <p id="affirmation">
+      <svg
+        class="leaf"
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        viewBox="0 0 24 24"
+        style="vertical-align: middle; margin-right: 6px;"
+      >
+        <path d="M12 22s8-10 8-16c0-3-2-4-6-4s-6 1-6 4c0 6 8 16 8 16z" />
+        <path d="M12 22v-8" />
+      </svg>
+      <span id="affirmation-text"></span>
+    </p>
+  </div>
+  <script src="affirmations.js"></script>
 </body>
 </html>
