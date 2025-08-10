@@ -1,60 +1,49 @@
 body {
-  margin: 0;
-  padding: 0;
-  background: #f5f0e8; /* cozy beige */
+  background: transparent; /* Transparent so Notion background shows */
+  font-family: 'Georgia', serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
 }
 
-.widget {
-  background: #f5f0e8;
-  padding: 12px 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+.widget-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  min-width: 280px;
-  max-width: 500px;
-  color: #5a513f; /* default text & leaf color */
-  transition: color 0.3s ease;
-}
-
-.color-options {
-  display: flex;
   gap: 8px;
-  margin-bottom: 10px;
-}
-
-.color-circle {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 1px solid rgba(0,0,0,0.1);
-  cursor: pointer;
-}
-
-.color-circle:nth-child(1) { background: #a6987f; }
-.color-circle:nth-child(2) { background: #eabecf; }
-.color-circle:nth-child(3) { background: #b8d5c8; }
-.color-circle:nth-child(4) { background: #a3c4f3; }
-
-#affirmation {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background-color: var(--widget-bg, #f5f5dc);
+  transition: background-color 0.3s ease, color 0.3s ease;
   font-size: 14px;
-  text-align: center;
-  line-height: 1.4;
-  text-transform: lowercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  max-width: 400px;
 }
 
 .leaf {
-  font-size: 18px;
-  margin-right: 6px;
-  transition: color 0.3s ease;
-  /* leaf inherits widget color by default */
+  font-size: 14px;
 }
+
+#affirmation {
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.theme-selector {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.color-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.beige { background-color: #f5f5dc; }
+.pink { background-color: #f9d5d3; }
+.sage { background-color: #cce0d0; }
+.blue { background-color: #cfe7f3; }
