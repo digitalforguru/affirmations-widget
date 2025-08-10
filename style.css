@@ -1,0 +1,64 @@
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  width: 550px;
+  height: 90px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.leaf {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+}
+
+.affirmation {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: #333;
+  flex: 1;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+}
+
+.color-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.beige { background-color: #f5f0e6; }
+.pink { background-color: #fbe4e6; }
+.sage { background-color: #e4f0e6; }
+.blue { background-color: #e3f0f7; }
