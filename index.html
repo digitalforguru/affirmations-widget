@@ -1,23 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Daily Affirmation Widget</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
 <body>
-  <div class="widget-container" id="widget">
-    <span class="leaf">𓅫</span>
-    <p id="affirmation"></p>
-    <div class="theme-selector">
-      <span class="color-circle beige" onclick="setTheme('beige')"></span>
-      <span class="color-circle pink" onclick="setTheme('pink')"></span>
-      <span class="color-circle sage" onclick="setTheme('sage')"></span>
-      <span class="color-circle blue" onclick="setTheme('blue')"></span>
+
+<!-- 🌸 BUILDER UI -->
+<div class="builder-ui">
+
+  <div class="widget-header">
+    Daily Affirmation Widget
+  </div>
+
+  <!-- TIP BOX -->
+  <div id="usageTip" class="usage-tip">
+    welcome to your affirmation widget ✧  
+    - customize theme + font  
+    - copy embed link  
+    - enjoy your daily affirmation
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="top-left-controls">
+
+    <!-- NEW AFFIRMATION BUTTON -->
+    <div id="refreshBtn" class="btn sign-btn" title="new affirmation">
+      ✶
+    </div>
+
+    <!-- THEME -->
+    <div id="themeBtn" class="btn theme-btn" title="select theme"></div>
+
+    <!-- FONT -->
+    <div id="fontToggle" class="btn font-toggle-btn" title="font">Aa</div>
+
+  </div>
+
+  <!-- THEME POPUP -->
+  <div id="themeOptions" class="sign-popup hidden">
+    <div class="sign-title">select theme</div>
+
+    <div class="themes-row">
+      <div class="theme-circle pink" data-theme="pink"></div>
+      <div class="theme-circle beige" data-theme="beige"></div>
+      <div class="theme-circle blue" data-theme="blue"></div>
+      <div class="theme-circle green" data-theme="green"></div>
     </div>
   </div>
-  <script src="affirmations.js"></script>
-  <script src="theme.js"></script>
+
+  <!-- FONT POPUP -->
+  <div id="fontOptions" class="sign-popup hidden">
+    <div class="sign-title">select font</div>
+
+    <div class="font-list">
+      <div class="font-option" data-font="default">default</div>
+      <div class="font-option" data-font="serif">serif</div>
+      <div class="font-option" data-font="mono">mono</div>
+    </div>
+  </div>
+
+  <!-- COPY AREA -->
+  <div class="setup-area">
+    <button id="copyLinkBtn" class="copy-btn">
+      copy my embed Notion link .ᐟ.ᐟ
+    </button>
+
+    <p id="copyMessage" class="copy-message hidden">
+      copied! paste into notion .ᐟ.ᐟ
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-links">
+    <a href="#" class="footer-link">shop templates</a>
+    <span class="divider">•</span>
+    <a href="#" class="footer-link">tiktok</a>
+  </div>
+
+</div>
+
+<!-- 🌿 WIDGET OUTPUT -->
+<div id="widget" class="widget">
+
+  <div class="widget-content">
+
+    <div id="affirmationText">your affirmation will appear here</div>
+
+    <div id="date"></div>
+
+  </div>
+
+</div>
+
+<script src="affirmations.js"></script>
+<script src="theme.js"></script>
 </body>
-</html>
