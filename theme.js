@@ -6,25 +6,23 @@ let state = {
   theme: localStorage.getItem("theme") || "beige"
 };
 
-/* ---------------- THEMES ---------------- */
-const themes = {
-  beige: {
-    bg: "#f5f5dc",
-    color: "#8b7355"
-  },
-  pink: {
-    bg: "#f9d5d3",
-    color: "#b56576"
-  },
-  sage: {
-    bg: "#cce0d0",
-    color: "#6b8f71"
-  },
-  blue: {
-    bg: "#cfe7f3",
-    color: "#4a6fa5"
-  }
-};
+const themeBtn = document.getElementById("themeBtn");
+const themeOptions = document.getElementById("themeOptions");
+
+const fontBtn = document.getElementById("fontToggle");
+const fontOptions = document.getElementById("fontOptions");
+
+/* OPEN/CLOSE THEME */
+themeBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  themeOptions.classList.toggle("hidden");
+});
+
+/* OPEN/CLOSE FONT */
+fontBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  fontOptions.classList.toggle("hidden");
+});
 
 /* ---------------- APPLY THEME ---------------- */
 function applyTheme() {
@@ -54,6 +52,16 @@ function loadAffirmation() {
   const random = affirmations[Math.floor(Math.random() * affirmations.length)];
   affirmationText.textContent = random;
 }
+
+document.addEventListener("click", (e) => {
+  if (!themeBtn.contains(e.target) && !themeOptions.contains(e.target)) {
+    themeOptions.classList.add("hidden");
+  }
+
+  if (!fontBtn.contains(e.target) && !fontOptions.contains(e.target)) {
+    fontOptions.classList.add("hidden");
+  }
+});
 
 /* ---------------- INIT ---------------- */
 applyTheme();
