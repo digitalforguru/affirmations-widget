@@ -255,4 +255,4 @@ function getDailyAffirmation() {
   return affirmations[index % affirmations.length];
 }
 
-document.getElementById("affirmation").textContent = getDailyAffirmation();
+document.getElementById("affirmationText").textContent = getDailyAffirmation();
