@@ -34,13 +34,11 @@ function applyTheme() {
   widget.style.color = t.color;
 }
 
-/* ---------------- SET THEME (GLOBAL FOR HTML ONCLICK) ---------------- */
 function setTheme(theme) {
-  state.theme = theme;
+  const widget = document.getElementById("widget");
 
-  localStorage.setItem("theme", theme);
-
-  applyTheme();
+  widget.classList.remove("beige", "pink", "sage", "blue");
+  widget.classList.add(theme);
 }
 
 /* ---------------- AFFIRMATIONS ---------------- */
