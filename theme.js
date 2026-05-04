@@ -7,13 +7,21 @@ const themeOptions = document.getElementById("themeOptions");
 const fontBtn = document.getElementById("fontToggle");
 const fontOptions = document.getElementById("fontOptions");
 const sizeOptions = document.getElementById("sizeOptions");
+const params = new URLSearchParams(window.location.search);
 
 /* ---------------- STATE ---------------- */
 let state = {
-  theme: localStorage.getItem("theme") || "beige",
-  font: localStorage.getItem("font") || "default",
-  size: localStorage.getItem("size") || "small"
+  theme: params.get("theme") || localStorage.getItem("theme") || "beige",
+  font: params.get("font") || localStorage.getItem("font") || "default",
+  size: params.get("size") || localStorage.getItem("size") || "small"
 };
+
+const isEmbed = params.get("embed") === "true";
+
+if (isEmbed) {
+  const builder = document.querySelector(".builder-ui");
+  if (builder) builder.style.display = "none";
+}
 
 /* ---------------- THEME ---------------- */
 function setTheme(theme) {
@@ -26,7 +34,7 @@ function setTheme(theme) {
 function buildEmbedURL() {
   const base = window.location.origin + window.location.pathname;
 
-  return `${base}?theme=${localStorage.getItem("theme") || "beige"}&font=${localStorage.getItem("font") || "default"}&embed=true`;
+  return `${base}?theme=${state.theme}&font=${state.font}&size=${state.size}&embed=true`;
 }
 
 const copyBtn = document.getElementById("copyLinkBtn");
@@ -49,19 +57,13 @@ copyBtn.addEventListener("click", () => {
 
 const sizeBtn = document.getElementById("sizeBtn");
 
-let sizes = ["small", "medium", "wide"];
-let sizeIndex = 0;
+function setSize(size) {
+  state.size = size;
+  localStorage.setItem("size", size);
 
-sizeBtn.addEventListener("click", () => {
-  // remove old size
   widget.classList.remove("small", "medium", "wide");
-
-  // update index
-  sizeIndex = (sizeIndex + 1) % sizes.length;
-
-  // apply new size
-  widget.classList.add(sizes[sizeIndex]);
-});
+  widget.classList.add(size);
+}
 /* ---------------- AFFIRMATION ---------------- */
 function loadAffirmation() {
   const random = affirmations[Math.floor(Math.random() * affirmations.length)];
@@ -101,6 +103,15 @@ document.querySelectorAll(".font-option").forEach(option => {
     fontOptions.classList.add("hidden");
   });
 });
+document.querySelectorAll(".size-option").forEach(option => {
+  option.addEventListener("click", () => {
+    setSize(option.dataset.size);
+    sizeOptions.classList.add("hidden");
+  });
+});
+if (!sizeBtn.contains(e.target) && !sizeOptions.contains(e.target)) {
+  sizeOptions.classList.add("hidden");
+}
 
 /* ---------------- OUTSIDE CLICK ---------------- */
 document.addEventListener("click", (e) => {
@@ -114,5 +125,6 @@ document.addEventListener("click", (e) => {
 });
 
 setTheme(state.theme);
-setFont(state.font); // ✨ THIS LINE
+setFont(state.font);
+setSize(state.size);
 loadAffirmation();
