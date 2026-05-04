@@ -128,3 +128,4 @@ setTheme(state.theme);
 setFont(state.font);
 setSize(state.size);
 loadAffirmation();
+
