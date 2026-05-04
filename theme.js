@@ -6,7 +6,6 @@ const themeOptions = document.getElementById("themeOptions");
 
 const fontBtn = document.getElementById("fontToggle");
 const fontOptions = document.getElementById("fontOptions");
-const sizeBtn = document.getElementById("sizeBtn");
 const sizeOptions = document.getElementById("sizeOptions");
 
 /* ---------------- STATE ---------------- */
