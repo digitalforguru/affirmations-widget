@@ -364,3 +364,20 @@ body {
 .widget.font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
+
+/* ---------------- SIZE VARIANTS ---------------- */
+
+.widget.small {
+  width: 180px;
+  height: 180px;
+}
+
+.widget.medium {
+  width: 220px;
+  height: 220px;
+}
+
+.widget.wide {
+  width: 260px;
+  height: 160px;
+}
