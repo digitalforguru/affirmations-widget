@@ -6,7 +6,10 @@ const themeOptions = document.getElementById("themeOptions");
 
 const fontBtn = document.getElementById("fontToggle");
 const fontOptions = document.getElementById("fontOptions");
+
+const sizeBtn = document.getElementById("sizeBtn");
 const sizeOptions = document.getElementById("sizeOptions");
+
 const params = new URLSearchParams(window.location.search);
 
 /* ---------------- STATE ---------------- */
@@ -31,12 +34,33 @@ function setTheme(theme) {
   widget.classList.remove("beige", "pink", "sage", "blue");
   widget.classList.add(theme);
 }
+
+/* ---------------- FONT ---------------- */
+function setFont(font) {
+  state.font = font;
+  localStorage.setItem("font", font);
+
+  widget.classList.remove("font-default", "font-serif", "font-mono");
+  widget.classList.add(`font-${font}`);
+}
+
+/* ---------------- SIZE ---------------- */
+function setSize(size) {
+  state.size = size;
+  localStorage.setItem("size", size);
+
+  widget.classList.remove("small", "medium", "wide");
+  widget.classList.add(size);
+}
+
+/* ---------------- EMBED LINK ---------------- */
 function buildEmbedURL() {
   const base = window.location.origin + window.location.pathname;
 
   return `${base}?theme=${state.theme}&font=${state.font}&size=${state.size}&embed=true`;
 }
 
+/* ---------------- COPY LINK ---------------- */
 const copyBtn = document.getElementById("copyLinkBtn");
 
 copyBtn.addEventListener("click", () => {
@@ -55,27 +79,12 @@ copyBtn.addEventListener("click", () => {
   }
 });
 
-const sizeBtn = document.getElementById("sizeBtn");
-
-function setSize(size) {
-  state.size = size;
-  localStorage.setItem("size", size);
-
-  widget.classList.remove("small", "medium", "wide");
-  widget.classList.add(size);
-}
 /* ---------------- AFFIRMATION ---------------- */
 function loadAffirmation() {
-  const random = affirmations[Math.floor(Math.random() * affirmations.length)];
+  const random =
+    affirmations[Math.floor(Math.random() * affirmations.length)];
+
   affirmationText.textContent = random;
-}
-function setFont(font) {
-  state.font = font; // keeps state in sync
-
-  widget.classList.remove("font-default", "font-serif", "font-mono");
-  widget.classList.add(`font-${font}`);
-
-  localStorage.setItem("font", font);
 }
 
 /* ---------------- POPUPS ---------------- */
@@ -89,6 +98,13 @@ fontBtn.addEventListener("click", (e) => {
   fontOptions.classList.toggle("hidden");
 });
 
+if (sizeBtn) {
+  sizeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    sizeOptions.classList.toggle("hidden");
+  });
+}
+
 /* ---------------- OPTIONS ---------------- */
 document.querySelectorAll(".theme-circle").forEach(circle => {
   circle.addEventListener("click", () => {
@@ -99,19 +115,17 @@ document.querySelectorAll(".theme-circle").forEach(circle => {
 
 document.querySelectorAll(".font-option").forEach(option => {
   option.addEventListener("click", () => {
-    setFont(option.dataset.font); // ✨ clean + reusable
+    setFont(option.dataset.font);
     fontOptions.classList.add("hidden");
   });
 });
+
 document.querySelectorAll(".size-option").forEach(option => {
   option.addEventListener("click", () => {
     setSize(option.dataset.size);
     sizeOptions.classList.add("hidden");
   });
 });
-if (!sizeBtn.contains(e.target) && !sizeOptions.contains(e.target)) {
-  sizeOptions.classList.add("hidden");
-}
 
 /* ---------------- OUTSIDE CLICK ---------------- */
 document.addEventListener("click", (e) => {
@@ -122,10 +136,18 @@ document.addEventListener("click", (e) => {
   if (!fontBtn.contains(e.target) && !fontOptions.contains(e.target)) {
     fontOptions.classList.add("hidden");
   }
+
+  if (
+    sizeBtn &&
+    !sizeBtn.contains(e.target) &&
+    !sizeOptions.contains(e.target)
+  ) {
+    sizeOptions.classList.add("hidden");
+  }
 });
 
+/* ---------------- INIT ---------------- */
 setTheme(state.theme);
 setFont(state.font);
 setSize(state.size);
 loadAffirmation();
-
