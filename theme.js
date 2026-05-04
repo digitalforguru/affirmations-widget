@@ -81,10 +81,32 @@ copyBtn.addEventListener("click", () => {
 
 /* ---------------- AFFIRMATION ---------------- */
 function loadAffirmation() {
-  const random =
-    affirmations[Math.floor(Math.random() * affirmations.length)];
+  const today = new Date();
 
-  affirmationText.textContent = random;
+  // stable daily key (same every refresh that day)
+  const dayKey =
+    today.getFullYear() * 10000 +
+    (today.getMonth() + 1) * 100 +
+    today.getDate();
+
+  const index = dayKey % affirmations.length;
+
+  const affirmation = affirmations[index];
+
+  affirmationText.textContent = affirmation;
+
+  // optional: show date like horoscope style
+  const dateEl = document.getElementById("date");
+
+  if (dateEl) {
+    const formatted = today.toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "short",
+      day: "numeric"
+    });
+
+    dateEl.textContent = formatted;
+  }
 }
 
 /* ---------------- POPUPS ---------------- */
