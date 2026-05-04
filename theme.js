@@ -47,7 +47,6 @@ copyBtn.addEventListener("click", () => {
 });
 
 const sizeBtn = document.getElementById("sizeBtn");
-const widget = document.getElementById("widget");
 
 let sizes = ["small", "medium", "wide"];
 let sizeIndex = 0;
