@@ -394,3 +394,68 @@ body {
   width: 260px;
   height: 160px;
 }
+/* ---------------- SIZE POPUP ---------------- */
+#sizeOptions {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 16px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+
+  z-index: 25;
+}
+
+/* title (if you add one like your other popups) */
+#sizeOptions::before {
+  content: "select size";
+  font-size: 11px;
+  opacity: 0.6;
+  text-transform: lowercase;
+}
+
+/* ---------------- SIZE BUTTONS ---------------- */
+.size-option {
+  width: 120px;
+
+  padding: 8px 10px;
+
+  border-radius: 12px;
+
+  text-align: center;
+  font-size: 12px;
+
+  cursor: pointer;
+
+  background: rgba(255,255,255,0.6);
+
+  transition: all 0.2s ease;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+/* hover effect */
+.size-option:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+}
+
+/* active state (optional but nice) */
+.size-option.active {
+  background: #f9d5d3;
+  color: #b56576;
+  transform: scale(1.03);
+}
