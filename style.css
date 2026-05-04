@@ -92,10 +92,23 @@ body {
 }
 
 /* ---------------- THEME + FONT BUTTONS ---------------- */
-.theme-btn,
 .font-toggle-btn {
   font-size: 13px;
   font-weight: 500;
+}
+
+.theme-btn {
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  background-color: #f4dfeb; /* ALWAYS pink */
+  border: 2px solid white;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 /* ---------------- POPUP CARDS (MATCH WEATHER STYLE) ---------------- */
