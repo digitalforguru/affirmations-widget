@@ -1,5 +1,5 @@
 const widget = document.getElementById("widget");
-const affirmationText = document.getElementById("affirmation");
+const affirmationText = document.getElementById("affirmationText");
 
 /* ---------------- STATE ---------------- */
 let state = {
@@ -23,14 +23,18 @@ fontBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   fontOptions.classList.toggle("hidden");
 });
+document.querySelectorAll(".font-option").forEach(option => {
+  option.addEventListener("click", () => {
+    const font = option.dataset.font;
 
-/* ---------------- APPLY THEME ---------------- */
-function applyTheme() {
-  const t = themes[state.theme];
+    widget.classList.remove("font-default", "font-serif", "font-mono");
+    widget.classList.add(`font-${font}`);
 
-  widget.style.backgroundColor = t.bg;
-  widget.style.color = t.color;
-}
+    localStorage.setItem("font", font);
+    fontOptions.classList.add("hidden");
+  });
+});
+
 
 function setTheme(theme) {
   const widget = document.getElementById("widget");
@@ -38,6 +42,13 @@ function setTheme(theme) {
   widget.classList.remove("beige", "pink", "sage", "blue");
   widget.classList.add(theme);
 }
+
+document.querySelectorAll(".theme-circle").forEach(circle => {
+  circle.addEventListener("click", () => {
+    setTheme(circle.dataset.theme);
+    themeOptions.classList.add("hidden");
+  });
+});
 
 /* ---------------- AFFIRMATIONS ---------------- */
 const affirmations = [
