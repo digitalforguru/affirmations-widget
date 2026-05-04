@@ -248,11 +248,3 @@ const affirmations = [
   "you deserve rest and gentle moments",
   "you are blossoming quietly with grace"
 ];
-
-function getDailyAffirmation() {
-  const date = new Date();
-  const index = date.getFullYear() * 365 + date.getMonth() * 31 + date.getDate();
-  return affirmations[index % affirmations.length];
-}
-
-document.getElementById("affirmationText").textContent = getDailyAffirmation();
