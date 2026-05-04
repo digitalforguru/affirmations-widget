@@ -67,7 +67,7 @@ function loadAffirmation() {
   affirmationText.textContent = random;
 }
 function setFont(font) {
-  const widget = document.getElementById("widget");
+  state.font = font; // keeps state in sync
 
   widget.classList.remove("font-default", "font-serif", "font-mono");
   widget.classList.add(`font-${font}`);
@@ -96,12 +96,7 @@ document.querySelectorAll(".theme-circle").forEach(circle => {
 
 document.querySelectorAll(".font-option").forEach(option => {
   option.addEventListener("click", () => {
-    const font = option.dataset.font;
-
-    widget.classList.remove("font-default", "font-serif", "font-mono");
-    widget.classList.add(`font-${font}`);
-
-    localStorage.setItem("font", font);
+    setFont(option.dataset.font); // ✨ clean + reusable
     fontOptions.classList.add("hidden");
   });
 });
@@ -117,6 +112,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-/* ---------------- INIT ---------------- */
 setTheme(state.theme);
+setFont(state.font); // ✨ THIS LINE
 loadAffirmation();
