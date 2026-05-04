@@ -22,10 +22,58 @@ function setTheme(theme) {
   widget.classList.add(theme);
 }
 
+function buildEmbedURL() {
+  const base = window.location.origin + window.location.pathname;
+
+  return `${base}?theme=${localStorage.getItem("theme") || "beige"}&font=${localStorage.getItem("font") || "default"}&embed=true`;
+}
+
+const copyBtn = document.getElementById("copyLinkBtn");
+
+copyBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(buildEmbedURL());
+
+  const msg = document.getElementById("copyMessage");
+
+  if (msg) {
+    msg.classList.remove("hidden");
+    msg.classList.add("show");
+
+    setTimeout(() => {
+      msg.classList.remove("show");
+      msg.classList.add("hidden");
+    }, 2000);
+  }
+});
+
+const sizeBtn = document.getElementById("sizeBtn");
+const widget = document.getElementById("widget");
+
+let sizes = ["small", "medium", "wide"];
+let sizeIndex = 0;
+
+sizeBtn.addEventListener("click", () => {
+  // remove old size
+  widget.classList.remove("small", "medium", "wide");
+
+  // update index
+  sizeIndex = (sizeIndex + 1) % sizes.length;
+
+  // apply new size
+  widget.classList.add(sizes[sizeIndex]);
+});
 /* ---------------- AFFIRMATION ---------------- */
 function loadAffirmation() {
   const random = affirmations[Math.floor(Math.random() * affirmations.length)];
   affirmationText.textContent = random;
+}
+function setFont(font) {
+  const widget = document.getElementById("widget");
+
+  widget.classList.remove("font-default", "font-serif", "font-mono");
+  widget.classList.add(`font-${font}`);
+
+  localStorage.setItem("font", font);
 }
 
 /* ---------------- POPUPS ---------------- */
