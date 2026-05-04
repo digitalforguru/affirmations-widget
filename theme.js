@@ -6,11 +6,14 @@ const themeOptions = document.getElementById("themeOptions");
 
 const fontBtn = document.getElementById("fontToggle");
 const fontOptions = document.getElementById("fontOptions");
+const sizeBtn = document.getElementById("sizeBtn");
+const sizeOptions = document.getElementById("sizeOptions");
 
 /* ---------------- STATE ---------------- */
 let state = {
   theme: localStorage.getItem("theme") || "beige",
-  font: localStorage.getItem("font") || "default"
+  font: localStorage.getItem("font") || "default",
+  size: localStorage.getItem("size") || "small"
 };
 
 /* ---------------- THEME ---------------- */
@@ -21,7 +24,6 @@ function setTheme(theme) {
   widget.classList.remove("beige", "pink", "sage", "blue");
   widget.classList.add(theme);
 }
-
 function buildEmbedURL() {
   const base = window.location.origin + window.location.pathname;
 
