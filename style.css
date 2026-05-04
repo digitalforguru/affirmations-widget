@@ -166,10 +166,10 @@ body {
   box-shadow: 0 6px 14px rgba(0,0,0,0.15);
 }
 
-.theme-circle.pink { background-color: #f9d5d3; }
-.theme-circle.beige { background-color: #f5f5dc; }
-.theme-circle.blue { background-color: #cfe7f3; }
-.theme-circle.green { background-color: #cce0d0; }
+.theme-circle.pink { background-color: #f4dfeb; }
+.theme-circle.beige { background-color: #faebdd; }
+.theme-circle.blue { background-color: #ddebf1; }
+.theme-circle.green { background-color: #ddedea; }
 
 /* ---------------- FONT LIST ---------------- */
 .font-list {
@@ -244,10 +244,10 @@ body {
 }
 
 /* THEMES */
-.widget.pink { background: #f9d5d3; color: #b56576; }
-.widget.beige { background: #f5f5dc; color: #8b7355; }
-.widget.blue { background: #cfe7f3; color: #4a6fa5; }
-.widget.green { background: #cce0d0; color: #6b8f71; }
+.widget.pink { background-color: #f4dfeb; color: #60355c; }
+.widget.beige { background-color: #faebdd; color: #5d4c3a; }
+.widget.blue { background-color: #ddebf1; color: #4b5c74; }
+.widget.green { background-color: #ddedea; color: #5b6c5a; }
 
 /* ---------------- CONTENT ---------------- */
 .widget-content {
@@ -381,18 +381,18 @@ body {
 /* ---------------- SIZE VARIANTS ---------------- */
 
 .widget.small {
-  width: 180px;
-  height: 180px;
+  width: 90px;
+  height: 90px;
 }
 
 .widget.medium {
-  width: 220px;
-  height: 220px;
+  width: 145px;
+  height: 145px;
 }
 
 .widget.wide {
-  width: 260px;
-  height: 160px;
+  width: 200px;
+  height: 80px;
 }
 /* ---------------- SIZE POPUP ---------------- */
 #sizeOptions {
