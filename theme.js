@@ -31,7 +31,7 @@ function setTheme(theme) {
   state.theme = theme;
   localStorage.setItem("theme", theme);
 
-  widget.classList.remove("beige", "pink", "sage", "blue");
+  widget.classList.remove("beige", "pink", "green", "blue", "black", "white");
   widget.classList.add(theme);
 }
 
